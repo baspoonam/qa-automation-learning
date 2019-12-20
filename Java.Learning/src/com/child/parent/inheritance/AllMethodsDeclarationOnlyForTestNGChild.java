@@ -1,0 +1,812 @@
+package com.child.parent.inheritance;
+
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+// this class will use to declare all the methods , which will be called on parent class 
+
+
+
+public class AllMethodsDeclarationOnlyForTestNGChild{
+	
+	//click Registration
+	private final static By REGISTER = By.xpath("//a[text()='REGISTER']");
+
+	private final static By SIGN_ON = By.xpath("//a[text()='SIGN-ON']");
+
+	private final static By USER_NAME = By.xpath(" //input[@name= 'userName']");
+
+	private final static By PASSWD = By.xpath("//input[@name= 'password'] ");
+	private final static By LOGIN = By.xpath("//input[@name='login']");
+	private final static By FLIGHT_CHECK = By.xpath("//*[contains(text(),'Flight ')]");
+
+
+	// contact information
+	private final static  By  FIRST_NAME =  By.xpath("//input[@name = 'firstName']");
+
+	private final static  By  LAST_NAME =  By.xpath("//input[@name = 'LastName']");
+
+	private final static  By  PHONE =  By.xpath("//input[@name = 'Phone']");
+
+	private final static  By  EMAIL =  By.xpath("//input[@name = 'Email']");
+	
+    private final static By SUBMIT = By.xpath("//input[@name = 'register'] ");
+
+	
+ 	// flight booking
+        
+    private final static By FLIGHT_CLICK = By.xpath("//a[contains(text(),'Flights')]");
+
+    private final static By SELECT_ROUND_TRIP = By.xpath("//input[@name='tripType'][1]");
+
+    private final static By SELECT_ONEWAY_TRIP = By.xpath("//input[@name='tripType'][2]");
+
+    private final static By SELECT_NUMBER_OF_PASSANGER = By.xpath("//select[@name='passCount']");
+	
+    private final static By DEPARTING_FROM = By.xpath("//select[@name ='fromPort']");
+
+    private final static By DEPARTINGMONTH = By.xpath("//select[@name ='fromMonth']");
+	
+    private final static By DEPARTINGDAY = By.xpath("//select[@name = 'fromDay']");
+
+    private final static By ARRIVING = By.xpath("//select[@name ='toPort']");
+
+    private final static By MONTH = By.xpath("//select[@name = 'toMonth']");
+
+    private final static By DAY = By.xpath("//select[@name = 'toDay']");
+
+    private final  static By PREFERENCES = By.xpath("//input[@name='servClass'][1]");
+
+    private final static By AIRLINE = By.xpath("//select[@name ='airline']");
+
+    private final static By CLICKCONTINUE = By.xpath("//input[@name='findFlights']");
+    
+    // Book a Flight Page 
+    
+    private final static By FIRST_NAME_BOOK_A_FLIGHT = By.xpath("//*[@name ='passFirst0']");
+   
+    private final static By LAST_NAME_BOOK_A_FLIGHT = By.xpath("//*[@name ='passLast0'] ");
+   
+    private final static By MEAL = By.xpath("//select[@name = 'pass.0.meal']");
+    
+    private final static By CREDIT_CARD = By.xpath("//select[@name = 'creditCard']");
+	
+    private final static By CREDIT_NUMBER = By.xpath("//input[@name = 'creditnumber']");
+	 
+    private final static By DAYMONTH = By.xpath("//select[@name = 'cc_exp_dt_mn']");
+
+    private final static By YEAR = By.xpath("//select[@name = 'cc_exp_dt_yr']");
+    
+    private final static By SECOND_PASSANGER_FRIST_NAME = By.xpath("//input[@name = 'cc_frst_name']");
+    
+    private final static By SECOND_PASSANGER_MIDDLE_NAME = By.xpath("//input[@name='cc_mid_name']");
+    
+    private final static By SECOND_PASSANGER_LAST_NAME = By.xpath("//input[@name='cc_last_name']");
+    
+    private final static By	BILLING_ADDRESS = By.xpath("//*[@name ='billAddress1']");	
+    
+    private final static By CITY_OF_CARDHOLDER = By.xpath("//input[@name = 'billCity']");
+    
+    private final static By STATE_OF_CARDHOLDER = By.xpath("//input[@name = 'billState']");
+    
+    private final static By POSTAL_CODE = By.xpath("//input[@name = 'delZip']");
+    
+    private final static By COUNTRY_NAME = By.xpath("//select[@name='billCountry']");
+    
+    
+    //Book a Flight Page Delivery Address
+    private final static By DELIVER_ADDRESS = By.xpath("//input[@name='delAddress1']");
+    
+    private final static By DELIVER_CITY = By.xpath("//input[@name='delCity']");
+    
+    private final static By DELIVER_STATE = By.xpath("//input[@name='delState']");
+    
+    private final static By DELIVER_POSTALCODE = By.xpath("//input[@name='delZip']");
+    
+    private final static By DELIVER_COUNTRY = By.xpath("//select[@name='delCountry']");
+    
+    private final static By SECURE_PURCHASE = By.xpath("//input[@name = 'buyFlights']");
+    
+    private final static By ITENARY_BOOKED = By.xpath("//*[contains(text(), 'itinerary has been booked!')]") ;
+
+	private static final CharSequence CreditCard = null;
+   
+ 	
+    
+    public WebDriver driver;
+	private Select poonam;
+	private Select mySel;
+	
+	
+	// declare the methods here
+	
+	
+	// clicking Register link
+	public String checkRigisterButton() {
+	
+		String RegisterValue = driver.findElement(By.xpath("//a[contains(text(),'REGISTER')]")).getText();
+		if (RegisterValue == "REGISTER"){
+			return RegisterValue;
+		}else {
+			return "No its not true";
+		}
+
+}
+
+	public void clickRigister() {
+		driver.findElement(By.xpath("//a[contains(text(),'REGISTER')]")).click();
+
+	}
+	
+	// Contact information filling 
+	public void ContacInformation(String firstName, String lastName , String phoneNumber, String emailAddress) {
+		driver.findElement(By.xpath("//input[@name ='firstName']")).sendKeys(firstName);
+		driver.findElement(By.xpath("//input[@name ='lastName']")).sendKeys(lastName);
+		driver.findElement(By.xpath("//input[@name ='phone']")).sendKeys(phoneNumber);
+		driver.findElement(By.xpath("//*[@id='userName']")).sendKeys(emailAddress);
+
+	}
+	// contact mailingInformation filling
+	public void MailingInformation(String address, String city,  String state, String postalCode ) {
+		driver.findElement(By.xpath("//input[@name = 'address1']")).sendKeys(address);
+		driver.findElement(By.xpath("//input[@name ='city']")).sendKeys(city);
+		driver.findElement(By.xpath("//input[@name ='state']")).sendKeys(state);
+		driver.findElement(By.xpath("//input[@name ='postalCode']")).sendKeys(postalCode);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+	// contact country Information
+    public void clickDrop(String country) {
+		
+    	Select mySel = new Select(driver.findElement(By
+				.xpath("//select[@name='country']")));
+    	mySel.selectByVisibleText(country);
+    }
+    
+    // contact   User Information
+    public  void UserInformation(String emailAddress,String password,String confirmPassword ) {
+		driver.findElement(By.xpath("//*[@id='email']")).sendKeys(emailAddress);
+		driver.findElement(By.xpath("//input[@name ='password']")).sendKeys(password);
+		driver.findElement(By.xpath("//input[@name ='confirmPassword']")).sendKeys(confirmPassword );
+	}
+
+    // contact Submit Button
+      public  void clickSubmit(){
+		
+		driver.findElement(By.xpath("//input[@name='register']")).click();
+	}
+      
+      
+      
+      // I can see this "Thank you for registering."
+      
+      
+      public boolean verifyingTextregistering() {
+  		driver.findElement(By.xpath("")).isDisplayed();
+  		return true;
+      
+      }
+      
+     
+      
+      public boolean signOff(){
+    		driver.findElement(By.xpath("//a[contains(text(),'SIGN-OFF')]")).isDisplayed();
+    		return true;
+      
+      }   
+      
+      public  void  flightclick(){
+  		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+  		driver.findElement(By.xpath("//a[contains(text(),'Flights')]")).click();
+  		
+  	}
+      public  void selectRoundTrip(){
+  		WebElement web = driver.findElement(By.xpath("//input[@name='tripType'][1]"));
+  		web.click();
+  		
+  	}
+  	
+  	  public  void selectOneWayTrip(){
+  		WebElement web = driver.findElement(By.xpath("//input[@name='tripType'][2]"));
+  		web.click();
+  		
+  	}
+     
+       public  void selectNumberOfPassanger( String Number){
+		
+		Select seRadio1 = new Select(driver.findElement(By.xpath("//select[@name='passCount']")));
+		seRadio1.selectByVisibleText(Number);	
+	}
+	
+	
+	
+	
+	   public void selectDepartingFrom(String cityName){	
+		Select seRadio2 = new Select(driver.findElement(By.xpath("//select[@name ='fromPort']")));
+		seRadio2.selectByVisibleText(cityName);
+	}
+	
+	
+	   public  void departingDateAndMonth(String month, String date){
+		// selecting month
+		Select seRadio3 = new Select(driver.findElement(By.xpath("//select[@name ='fromMonth']")));
+		seRadio3.selectByVisibleText(month);
+		
+		// selecting day
+		Select seRadio4 = new Select(driver.findElement(By.xpath("//select[@name = 'fromDay']")));
+		seRadio4.selectByVisibleText(date);
+  	  
+}
+    
+	   public  void arrivingCityName(String cityName){
+			Select seRadio5 = new Select(driver.findElement(By.xpath("//select[@name ='toPort']")));
+			seRadio5.selectByVisibleText(cityName);
+			
+		}
+		
+		public void returningDateAndMonth(String month,String date){
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+			Select seRadio6 = new Select(driver.findElement(By.xpath("//select[@name = 'toMonth']")));
+			seRadio6.selectByVisibleText(month);		
+		
+		
+		   Select seRadio7 = new Select(driver.findElement(By.xpath("//select[@name = 'toDay']")));
+		   seRadio7.selectByVisibleText(date);
+	   }
+
+		
+		public  void selectPreferences(){		
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
+				WebElement  ServiceClass = driver.findElement(By.xpath("//input[@name='servClass'][1]"));
+			    ServiceClass.click();			 
+			 
+		}
+
+		public void selectAirline(String airlineType){
+			  Select seRadio9 = new Select(driver.findElement(By.xpath("//select[@name = 'airline']")));	   
+			   seRadio9.selectByVisibleText(airlineType);	   
+		}
+		
+		
+		
+	    public void clickFirstRadioButton(){
+					
+				// click radio while two same elements on page
+				WebElement type = driver.findElement(By.xpath("/images/forms/continue.gif[2]"));
+				type.click();
+	    }
+				
+	        public  void selectTripType(){
+				 		 
+			 // to select radio button 
+			 WebElement tripSelect  = driver.findElement(By.xpath(" "));
+			 tripSelect.click();
+			 }
+	        
+	        public void clickFlightClickButton(){
+	        	clickRigister();
+				ContacInformation( "Poonam", "Bas" , "1234567", "hello@email.com");
+				MailingInformation("4816 McClellan" , "Frisco",  "TX","75036" );
+				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				clickDrop("NEPAL");
+				UserInformation("hello@email.com","12345","12345" );
+				clickSubmit();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				flightclick();
+	        }
+			 
+	        
+	        public boolean verifyRoundTripButtonIsSelectedOrNot(){
+	        	driver.findElement(By.xpath("//input[@name='tripType'][1]")).isSelected();
+	        	return true;
+	        	
+	        }
+	        
+	        public boolean verifyonewayButtonIsSelectedOrNot(){
+	        	driver.findElement(By.xpath("//*[@value='oneway']")).isSelected();
+	        	return true;
+	        
+	        
+	        }
+	        
+	        public boolean testcheckboxTicketlessTravelRadioButtonIsSelectedOrNot(){
+	        	driver.findElement(By.xpath("//input[@name='ticketLess']")).isSelected();
+	        	return true;
+	        	
+	        }
+	        
+	        
+	        
+	        public void clickContinueBottonOnBooking(){	
+				clickRigister();
+				ContacInformation( "Poonam", "Bas" , "1234567", "hello@email.com");
+				MailingInformation("4816 McClellan" , "Frisco",  "TX","75036" );
+				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				clickDrop("NEPAL");
+				UserInformation("hello@email.com","12345","12345" );
+				clickSubmit();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				flightclick();
+				selectRoundTrip();
+				selectNumberOfPassanger("2");
+				selectDepartingFrom("London");
+				departingDateAndMonth("November", "18");
+				arrivingCityName("Acapulco");
+				returningDateAndMonth("January" , "1");
+				//returning("January","1");
+				//selectPreferences("Blue Skies Airlines");
+			}
+			
+			 
+			 public  void clickContinue(){
+				 
+				 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				 driver.findElement(By.xpath("//input[@name='findFlights']")).click();
+			 }
+			 
+			 
+			 public boolean verifyclickContinue(){
+				 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				driver.findElement(By.xpath("//*[@name='findFlights']")).isDisplayed();
+				return true;
+			 }
+    
+			 
+			 public boolean verifyDepartKeyWordOnFlightPage(){ 
+				 driver.findElement(By.xpath("//*[contains(text(),'DEPART')][1]")).isDisplayed();			 
+				 return true;
+				 
+			 }
+    
+  
+
+         
+
+
+         //using these paths on code 
+
+
+         public boolean verifySubmitButton() {
+         clickRigister();
+         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+         // using isDisplayed method to see the button
+         driver.findElement(REGISTER).isDisplayed();
+         return true;
+         }
+
+
+         
+
+         // to check the Register link is available or Not ?
+         public boolean verifyTheRegisterLink(){
+         driver.findElement(REGISTER).isDisplayed();
+         return true;
+         
+         
+         }
+         
+
+         
+         
+         
+         
+	public void signOnMethod(String userName, String password) {
+		driver.findElement(USER_NAME).sendKeys(userName);
+		driver.findElement(PASSWD).sendKeys(password);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		clickSigIn();
+
+	}
+
+	// this method will click SignIn buttton
+	public void clickSigIn() {
+		driver.findElement(LOGIN).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+
+	// checking the sumbit button is displayed or not ?
+	public boolean verifySignOnmethodIsSuccessful() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(FLIGHT_CHECK).isDisplayed();
+		if (FLIGHT_CHECK == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+       // checking xpath of the page when its not going to log on
+	public boolean verifySignOnmethodIsNOTSuccessful() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		driver.findElement(By.xpath("//*[contains(text(),'Password')]")).isDisplayed();
+		return true;
+	}
+
+         
+
+// 1 Arrays - one dimensional
+
+
+ 
+         
+          @Test(description = "learning One dimensional array")
+           public void learningArrays(){
+
+      
+    	  int[] OneDimens = new int [3];
+    	   
+    	   OneDimens [0] = 1;
+    	   OneDimens [1] = 2;
+    	   OneDimens [2] = 3;
+    	  
+    	  // positions  
+    	   for (int i=0; i < OneDimens. length; i++){
+    		System.out.println("Position of the array:" + 1);
+    		   
+    		   
+    	   }
+          }   
+          
+         // Class learning One dimensional and two-dimensional arrays learning code 
+
+          @Test( enabled = false, description = " One dimensional array")
+         public void myArrayMethod(){
+         String [] name = new String [5] ;
+         name[0]= " David";
+         name[1]= " Bd";
+         name[2]= " Cid";
+         name[3]= " Did";
+         name[4]= " Diod";
+         for (int i = 0; i < name.length; i++) {
+         System.out.println(" This is one dimensional array : " + i);
+
+         }
+
+         for (String string : name) {
+         System.out.println(string);
+         }
+
+         }
+
+         // to see printing 
+         @Test(enabled = false , description = " Two dimensional array")
+         public void myTwoArrayMethod(){
+         String[][] arrStr = new String[3][4];
+         for (int i = 0; i < arrStr.length; i++) {
+         for (int j = 0; j < arrStr[i].length; j++) {
+         arrStr[i][j] = "Str" + j;
+         System.out.print(arrStr[i][j] + " ");
+         }
+         System.out.println("");
+         }
+
+         }
+         
+//         public boolean verifySubmitButton() {
+//        	 clickRegister();
+//        	 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        	 // using isDisplayed method to see the button
+//        	 driver.findElement(REGISTER).isDisplayed();
+//        	 return true;
+//        	 }   	 
+//       	
+//       
+//       	 
+//       		
+//    		 
+//    		
+//         private void clickRegister() {
+//    		// TODO Auto-generated method stub
+//    		
+//    	}
+//
+//    	// to check the Register link is available or Not ?
+//         public boolean verifyTheRegisterLink(){
+//         driver.findElement(REGISTER).isDisplayed();
+//         return true;
+//         
+//         }
+         
+         
+ // test case 
+         
+//         Steps : 
+//
+//        	 1. Click Sign On 
+//
+//        	 2. Put username ( bhotebabu), Use Password (Cali123)
+//        	 3. click ‘Submit’
+//        	 4. Select ‘Round trip’ from radio button
+//        	 5. select 2 passanger 
+//        	 6. Select Dearting from ‘Lodon’
+//        	 7. Select date ‘Dec 20’
+//        	 8. Select to ‘ Paris’
+//        	 9. Select Return date as Dec 30’
+//        	 10. Select ‘Business Class’ as preferences
+//        	 11. Select ‘ Unified Airline’ 
+//        	 12. Click Continue
+//        	 13. Select Radio button with ‘Unified Airline’
+//        	 14. Select radio button to make sure Return Unified is selected
+//        	 15. Click Continue
+//        	 16. Give passenger first name as ‘ Poonam’
+//        	 17. Give passenger last name as ‘Bask’
+//        	 18. Give second passenger name as “ Hari’
+//        	 19. Give second Passenger last Name as “ Torpe”
+//        	 20. Select meal preference as ‘Hindu’
+//        	 21. Select Credit card type as ‘ Master Card’
+//        	 22. Give Credit card Number as ‘123456789’
+//        	 23. Select Expiration type 01 , 2010’
+//        	 24. Give card holder name as ‘Poonam’
+//        	 25. Give card holder last name as ‘Bas’
+//        	 26. Give billing address as ‘2345  late city’
+//        	 27. Give City as ‘ Sunnvale’
+//           28. Give State/Province as ' CA'
+//           29. Give Postal Code '94089'
+//           30. Give a Country name 'UNITED STATES'
+//           31. Click ‘Secure Purchase’
+         
+         
+         public void securePurchase(String userName, 
+        		 String Password,
+        		 String passangerNumber, 
+        		 String cityName, 
+        		 String month, 
+        		 String date,
+        		 String arrivingCity,
+        		 String returnDate, 
+        		 String returnMonth, 
+        		 String airline, 
+        		 String airlineUnified,
+        		 String PassangerFirstName,
+        		 String PassangerLastName,
+        		 String SecondPassangerFirstName, 
+        		 String SecondPassangerLastName,
+        		 String SecondPassangerMiddleName,
+        		 String MealPreference,
+        		 String SelectCreditCard , 
+        		 String CreditCardNumber, 
+        		 String CardExpirationYear,
+        		 String CardExpirationMonth,
+        		 String CreditCardHolderName,
+        		 String CardHolderLastName,
+        		 String CardHolderBillingAddress,
+        		 String CardHolderCity,
+        		 String CardHolderState,
+        		 String CardHolderCountryName,
+        		 String BillingAddress,
+        		 String City,
+        		 String StateProvince,
+        		 String PostalCode,
+        		 String Country,
+        		 String DeliveryAddress,
+        		 String DeliveryCity,
+        		 String State,
+        		 String Code,
+        		 String DeliveryCountry,
+        		 String Securepurchage
+        		 
+        		 
+        		 )
+         
+         {
+        	 // 1 - 31
+        	 signOnMethod(userName, Password);
+        	 clickSubmit();
+        	 selectRoundTrip();
+        	 selectNumberOfPassanger(passangerNumber);
+        	 selectDepartingFrom(cityName);
+        	 departingDateAndMonth(month, date);
+        	 arrivingCityName(arrivingCity);
+        	 returningDateAndMonth(returnDate, returnMonth);
+        	 selectPreferences();
+        	 selectAirline(airline);
+        	 clickContinue();
+        	 selectPassangerFirstName(PassangerFirstName);
+        	 selectPassangerLastName(PassangerLastName);
+        	 selectMealTypes( MealPreference );
+        	 selectCreditCard();
+        	 selectCreditCardNumber(CreditCardNumber);
+        	 selectCardExpirationMonth(CardExpirationMonth);
+        	 selectCardExpirationYear(CardExpirationYear);
+        	 putSecondPassangerFirstName(SecondPassangerFirstName);
+        	 putSecondPassangerMiddleName(SecondPassangerMiddleName);
+        	 putSecondPassangerLastName(SecondPassangerLastName);
+        	 customerBillingAddress(BillingAddress);
+        	 customerBillingCity( City);
+        	 customerBillingStateProvince(StateProvince);
+        	 customerBillingPostalCode( PostalCode);
+        	 customerBillingCountry( Country );
+        	 customerDeliveryAddress(DeliveryAddress);
+        	 customerDeliveryCity(DeliveryCity);
+        	 deliveryStateProvince(State);
+        	 deliveryPostalCode(Code);
+        	 deliveryCountry(DeliveryCountry);
+        	 clickSECUREPURCHAGE (Securepurchage);
+        	 
+        	 
+        	 
+        	 
+        	 
+   
+        	 
+        	 
+         }
+         
+      
+
+		// 33. Verify ‘Your itinerary has been booked!’
+         //Expected 													
+         //User should able to book two way ticket From London to Paris on dated Dec 25 and return date Dec 30
+
+       
+
+		// according to test case verify the text is preset ther or not ?
+         public boolean verifyTheItenaryIsBooked(){       	 
+        	 driver.findElement(ITENARY_BOOKED).isDisplayed();     	 
+        	 return true;     	 
+         }
+       
+         // verifying whether two passanger is booked or not ?
+        public boolean verifyTwoPassangerNumber(){
+        	driver.findElement(By.xpath("//*[contains(text(), '2 passenger')]")).isDisplayed();
+        	return true;
+        }
+      
+        // verify whether 'Unified Airline' is present on drop down..
+        // verify whether 'Blue skies Airline' is present on drop down..
+        // verify whether 'Pangeia Airline' is present on drop down..
+        
+        public boolean verifyAirline(String airlineName){
+        	Select we = new Select (driver.findElement(AIRLINE));
+        	we.selectByVisibleText(airlineName);
+        	if (airlineName != null ) {
+				return true;
+			} else {
+				return false;
+				
+			} 
+        	 }
+        
+        // Booking flight with passanger name 
+        // Finding First Name 
+        public void selectPassangerFirstName(String BFristName){
+        	driver.findElement(FIRST_NAME_BOOK_A_FLIGHT).sendKeys(BFristName);
+        	 }
+         
+
+        // Filling Passanger's last Name
+        private void selectPassangerLastName( String passangerLastName) {
+			driver.findElement(LAST_NAME_BOOK_A_FLIGHT).sendKeys(passangerLastName);
+        }
+
+        
+        private void selectMealTypes(String MealTypes ){
+            driver.findElement(MEAL).sendKeys(MealTypes);
+
+        }
+    	 
+        private void selectCreditCard(){
+        	driver.findElement(CREDIT_CARD).sendKeys(CreditCard);
+        	
+        }
+
+        private void selectCreditCardNumber(String CreditCardNumber){
+           driver.findElement(CREDIT_NUMBER).sendKeys(CreditCardNumber);
+
+        }
+
+        private void selectCardExpirationMonth(String CardExpirationMonth){
+          driver.findElement(DAYMONTH).sendKeys(CardExpirationMonth);
+        	
+        }
+        
+        private void selectCardExpirationYear(String CardExpirationYear){
+          driver.findElement(YEAR).sendKeys(CardExpirationYear);
+        	
+         }
+        
+        private void  putSecondPassangerFirstName(String SecondPassangerFirstName){
+        	driver.findElement(SECOND_PASSANGER_FRIST_NAME).sendKeys(SecondPassangerFirstName);
+        
+        }
+        
+        private void putSecondPassangerMiddleName(String SecondPassangerMiddleName){
+            driver.findElement(SECOND_PASSANGER_MIDDLE_NAME).sendKeys(SecondPassangerMiddleName);
+        
+        
+        }
+
+        private void putSecondPassangerLastName(String SecondPassangerLastName){
+        	driver.findElement(SECOND_PASSANGER_LAST_NAME).sendKeys(SecondPassangerLastName);
+        
+        }
+        
+        private void customerBillingAddress(String BillingAddress){
+            driver.findElement(BILLING_ADDRESS).sendKeys(BillingAddress);
+            
+        }
+
+       private void customerBillingCity(String City){
+    	   driver.findElement(CITY_OF_CARDHOLDER ).sendKeys(City);
+    	   
+    	   
+       }
+
+       private void customerBillingStateProvince(String StateProvince){
+           driver.findElement(STATE_OF_CARDHOLDER ).sendKeys(StateProvince);
+    	   
+       }
+       
+       private void customerBillingPostalCode(String PostalCode){
+           driver.findElement(POSTAL_CODE).sendKeys(PostalCode);
+           
+       }
+     
+       private void customerBillingCountry(String Country ){
+    	 driver.findElement(COUNTRY_NAME).sendKeys(Country) ;
+    	   
+       }
+
+       private void  customerDeliveryAddress(String DeliveryAddress){
+    	   driver.findElement(DELIVER_ADDRESS).sendKeys(DeliveryAddress);
+       }
+
+       private void customerDeliveryCity( String DeliveryCity){
+    	   driver.findElement(DELIVER_CITY).sendKeys(DeliveryCity);
+    	   
+       }
+       
+       private void deliveryStateProvince(String State){
+    	   driver.findElement(DELIVER_STATE).sendKeys(State);
+    	   
+       }
+    	private void deliveryPostalCode(String Code){
+    	  driver.findElement(DELIVER_POSTALCODE).sendKeys(Code);
+    	  
+    	}
+    	
+    	private void deliveryCountry(String DeliveryCountry){
+    		driver.findElement(DELIVER_COUNTRY).sendKeys(DeliveryCountry);
+    	}
+    	
+    	
+    	 private void clickSECUREPURCHAGE (String Securepurchage){
+    	      driver.findElement(SECURE_PURCHASE).sendKeys(Securepurchage);
+    	      
+    	      
+    	      
+    	 }	  
+    	  
+    	  
+    	  
+       
+
+
+
+
+
+}   
+      
+      
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+        
+    	   
+    	   
+      
+	

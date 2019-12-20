@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;LearningJavaBasics&apos;&#x0A;- Original project: &apos;LearningJavaBasics&apos;&#x0A;- Original element: &apos;LearningJavaBasics/src/org.openqa.seleniumPOM&apos;" description="Delete element" element1="/src&lt;org.openqa.seleniumPOM" element2="/src&lt;org.openqa" element3="/src&lt;org" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1575668896739" subPackages="false" version="1.0"/>
+</session>
