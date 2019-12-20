@@ -211,7 +211,7 @@ public class BrowserAndExecutionWithTestCasesParent extends AllMethodsDeclaratio
     	// test case 
     	// verify that vacation button is "under constructon"
     	//book a ticket for 4 passanger one way , from London to Zurich.
-    	// test case lekhda pasina aayo
+    	// 
 		
 		@AfterMethod
 		public void closeBrowser(){
