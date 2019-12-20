@@ -139,7 +139,7 @@ public class BrowserAndExecutionWithTestCasesParent extends AllMethodsDeclaratio
 		}
 		
 
-		@Test( dataProvider = "signOnDataWithHappyPath", description = " Sing In with various username and password with data provider")
+		@Test(enabled = false,  dataProvider = "signOnDataWithHappyPath", description = " Sing In with various username and password with data provider")
 		public void signingInWithDataProvider(String Username , String Password) {
 		signOnMethod (Username, Password);
 		Assert.assertTrue(verifySignOnmethodIsSuccessful());
@@ -159,7 +159,7 @@ public class BrowserAndExecutionWithTestCasesParent extends AllMethodsDeclaratio
 		};
 		}
 		
-		@Test(priority = 1 , dataProvider = "signOnDataWithNeagativePath", description = " Sing In with Negative username and password with data provider")
+		@Test(enabled = false, priority = 1 , dataProvider = "signOnDataWithNeagativePath", description = " Sing In with Negative username and password with data provider")
 		public void signingInWithDataProviderWithNegativeTesting(String Username , String Password) {
 		signOnMethod (Username, Password);
 		Assert.assertTrue(verifySignOnmethodIsNOTSuccessful());
@@ -176,8 +176,11 @@ public class BrowserAndExecutionWithTestCasesParent extends AllMethodsDeclaratio
 }
 
 
-       	@Test (description = "User should able to book two way ticket From London to Paris on dated Dec 25 and return date Dec 30")
+       	@Test (enabled = false, description = "User should able to book two way ticket From London to Paris on dated Dec 25 and return date Dec 30")
        	public void testItenaryIsBooked(){
+       		signOnMethod("bhotebabu ", "Cali123");
+       		// fill rest
+       		
        		//securePurchase("Poonam", "Bas", "2", "London", "December", "20",
            		// "Paris", "30", "December", "Unified");	
        		Assert.assertTrue(verifyTheItenaryIsBooked());
@@ -185,19 +188,30 @@ public class BrowserAndExecutionWithTestCasesParent extends AllMethodsDeclaratio
        	}
 		
 		// verify "Unified" airline is present on drop down
-       	@Test
+       	@Test(enabled = false)
        	public void testAirlineName(){
        		//1...fill all the methods to reach up to airline
+       		
        		Assert.assertTrue(verifyAirline("Unified Airline"));
        		
        	}
 		
-    	@Test
-       	public void testBlueSkiesAirlineName(){
+    	@Test ( description = "check the airline types are there ")
+       	public void testBlueSkiesAirlineName( ){
+    		SoftAssert softassert = new SoftAssert();
+    		signOnMethod("bhotebabu ", "Cali123");
+    		
        		//1...fill all the methods to reach up to airline
-       		Assert.assertTrue(verifyAirline("BlueSkis Airline"));
+    		softassert.assertTrue(verifyAirline("Blue Skies Airlines"));
+    		softassert.assertTrue(verifyAirline("Unified Airlines"));
+       		
+       		
        		
        	}
+    	// test case 
+    	// verify that vacation button is "under constructon"
+    	//book a ticket for 4 passanger one way , from London to Zurich.
+    	// 
 		
 		@AfterMethod
 		public void closeBrowser(){
